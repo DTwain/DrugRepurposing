@@ -4,9 +4,15 @@ GeneExplorer is a comprehensive JavaFX application that enables exploration of b
 
 ![GeneExplorer logo](src/main/resources/runningAppPhotos/result.png)
 
+
+The app was developed with the initial idea of visualizing a graph with genes associated with the searched gene, 
+but I ended up with a bad feeling about user experience because the graph was so massive and it was hard to visualize connected genes. The solution was, in fact, the final idea that I stuck with.
+![Initial idea](src/main/resources/runningAppPhotos/graph.png)
+
+
 ## Features
 
-- **Gene Search and Information**: Search for genes and view detailed information retrieved from KEGG
+- **Gene Search and Information**: Search for genes with real time suggestion and view detailed information retrieved from KEGG
 - **Disease Association**: Discover diseases associated with specific genes
 - **Drug Repurposing**: Find potential new applications for existing drugs based on pathway analysis
 - **Pathway Visualization**: Explore biological interaction networks
