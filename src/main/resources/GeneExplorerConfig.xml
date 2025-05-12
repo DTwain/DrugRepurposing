@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcProps1">
+        <prop key="jdbc.url">jdbc:sqlite:D:\\Facultate\\polihack\\GeneExplorer.db</prop>
+    </util:properties>
+
+    <util:properties id="jdbcProps" location="classpath:bd.config"/>
+
+    <!-- JDBC Utils shared instance -->
+    <bean id="jdbcUtils" class="org.example.repository.JdbcUtils" destroy-method="closeAllConnections">
+        <constructor-arg ref="jdbcProps"/>
+    </bean>
+
+    <!-- Repositories with jdbcUtils dependency -->
+    <bean id="geneDiseaseDrugCompoundRepository" class="org.example.repository.entitiesRepository.GeneDiseaseDrugCompoundRepository">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="interactionRepository" class="org.example.repository.entitiesRepository.InteractionRepository">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="userRepository" class="org.example.repository.entitiesRepository.UserRepository">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="drugRepurposingRepository" class="org.example.repository.entitiesRepository.DrugRepurposingRepository">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <!-- Services -->
+    <bean id="geneDiseaseDrugCompoundService" class="org.example.service.GeneDiseaseDrugCompoundService">
+        <constructor-arg ref="geneDiseaseDrugCompoundRepository"/>
+        <constructor-arg ref="userRepository"/>
+    </bean>
+
+    <bean id="interactionService" class="org.example.service.InteractionService">
+        <constructor-arg ref="geneDiseaseDrugCompoundRepository"/>
+        <constructor-arg ref="interactionRepository"/>
+    </bean>
+
+    <bean id="userService" class="org.example.service.UserService">
+        <constructor-arg ref="userRepository"/>
+    </bean>
+
+    <bean id="drugRepurposingService" class="org.example.service.DrugRepurposingService">
+        <constructor-arg ref="geneDiseaseDrugCompoundRepository"/>
+        <constructor-arg ref="drugRepurposingRepository"/>
+    </bean>
+
+    <!-- All services bundle -->
+    <bean id="allServices" class="org.example.service.AllServices">
+        <constructor-arg ref="userService"/>
+        <constructor-arg ref="geneDiseaseDrugCompoundService"/>
+        <constructor-arg ref="interactionService"/>
+        <constructor-arg ref="drugRepurposingService"/>
+    </bean>
+</beans>

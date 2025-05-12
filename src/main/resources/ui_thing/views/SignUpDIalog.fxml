@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.SignUpDialogController"
+      spacing="15" styleClass="dialog-content">
+
+    <Label text="Create Account" styleClass="dialog-title"/>
+
+    <Text fx:id="errorMessage" styleClass="error-text" visible="false" managed="false"/>
+
+    <VBox spacing="5">
+        <Label text="First Name" />
+        <TextField fx:id="firstNameField" promptText="Enter your first name"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Last Name" />
+        <TextField fx:id="lastNameField" promptText="Enter your last name"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Password" />
+        <PasswordField fx:id="passwordField" promptText="Create a password"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Confirm Password" />
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirm your password"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Occupation" />
+        <TextField fx:id="occupationField" promptText="Enter your occupation"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel" styleClass="cancel-button"/>
+        <Button fx:id="signUpButton" text="Sign Up" onAction="#handleSignUp" styleClass="primary-button" defaultButton="true"/>
+    </HBox>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>

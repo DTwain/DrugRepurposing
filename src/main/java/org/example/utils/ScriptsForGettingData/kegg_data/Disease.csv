@@ -1,0 +1,69 @@
+disease_id,description
+H00001,B-cell acute lymphoblastic leukemia; B-cell acute lymphocytic leukemia
+H00002,T-cell acute lymphoblastic leukemia; T-cell acute lymphocytic leukemia
+H00003,Acute myeloid leukemia
+H00004,Chronic myeloid leukemia
+H00005,Chronic lymphocytic leukemia
+H00006,Hairy cell leukemia
+H00007,Hodgkin lymphoma
+H00008,Burkitt lymphoma
+H00009,Adult T-cell leukemia
+H00010,Multiple myeloma
+H00011,Lymphoplasmacytic lymphoma
+H00012,Polycythemia vera
+H00013,Small cell lung cancer
+H00014,Non-small cell lung cancer
+H00015,Malignant pleural mesothelioma
+H00016,Oral cancer
+H00017,Esophageal cancer
+H00018,Gastric cancer
+H00019,Pancreatic cancer
+H00020,Colorectal cancer
+H00021,Renal cell carcinoma
+H00022,Bladder cancer
+H00023,Testicular cancer
+H00024,Prostate cancer
+H00025,Penile cancer
+H00026,Endometrial cancer
+H00027,Ovarian cancer
+H00028,Choriocarcinoma
+H00029,Vulvar cancer
+H00030,Cervical cancer
+H00031,Breast cancer
+H00032,Thyroid cancer
+H00033,Adrenal carcinoma
+H00034,Carcinoid
+H00035,Ewing sarcoma
+H00036,Osteosarcoma
+H00037,Rhabdomyosarcoma
+H00038,Melanoma
+H00039,Basal cell carcinoma
+H00040,Squamous cell carcinoma
+H00041,Kaposi sarcoma
+H00042,Glioma
+H00043,Neuroblastoma
+H00044,Cancer of the anal canal
+H00045,Pancreatic neuroendocrine tumor
+H00046,Cholangiocarcinoma
+H00047,Gallbladder cancer
+H00048,Hepatocellular carcinoma; Liver cancer
+H00049,Myxoid liposarcoma
+H00050,Synovial sarcoma
+H00051,Alveolar soft part sarcoma
+H00052,Clear cell sarcoma of soft tissue
+H00053,Extraskeletal myxoid chondrosarcoma
+H00054,Nasopharyngeal cancer
+H00055,Laryngeal cancer
+H00056,Alzheimer disease; Dementia due to Alzheimer disease
+H00057,Parkinson disease
+H00058,Amyotrophic lateral sclerosis (ALS); Lou Gehrig disease
+H00059,Huntington disease
+H00060,Dentatorubropallidoluysian atrophy (DRPLA)
+H00061,Prion disease
+H00062,Spinal and bulbar muscular atrophy (SBMA); Kennedy disease; X-linked spinal and bulbar muscular atrophy 1 (SMAX1)
+H00063,Spinocerebellar ataxia (SCA)
+H00064,Ataxia telangiectasia; Louis-Bar syndrome; Boder-Sedgwick syndrome
+H00065,Alexander disease
+H00066,Lewy body dementia (LBD); Dementia with Lewy bodies (DLB)
+H00067,Friedreich ataxia
+H00068,Leber hereditary optic atrophy; Leber optic atrophy

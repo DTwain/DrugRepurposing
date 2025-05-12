@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.TextFlow?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.controller.FullScreenController"
+            stylesheets="@/ui_thing/views/style.css"
+            fx:id="rootPane">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox fx:id="topBar" spacing="15" styleClass="top-bar" alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fx:id="logoImageView" fitHeight="40" fitWidth="40" preserveRatio="true">
+                    <image><Image url="@../logoBrand.png"/></image>
+                </ImageView>
+                <Label text="Drug Repurposing" styleClass="app-title"/>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <!-- Search Container -->
+            <HBox fx:id="searchContainer" alignment="CENTER" styleClass="search-container">
+                <TextField fx:id="searchField"
+                           promptText="Search gene..."
+                           styleClass="search-field-inset"/>
+                <Button fx:id="searchButton" styleClass="search-button">
+                    <graphic>
+                        <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                            <image><Image url="@../searchLogo.png"/></image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </HBox>
+            <!-- User Icon & Popup Toggle -->
+            <StackPane>
+                <ImageView fx:id="userIcon"
+                           fitHeight="40" fitWidth="40"
+                           styleClass="user-icon"
+                           preserveRatio="true"
+                           onMouseClicked="#showUserMenu">
+                    <image><Image url="@../loginLogo.png"/></image>
+                </ImageView>
+            </StackPane>
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <HBox>
+            <VBox styleClass="sidebar">
+                <Button text="Dashboard" styleClass="sidebar-button, active"/>
+                <Button text="Gene Search" styleClass="sidebar-button"/>
+                <Button text="Drug Database" styleClass="sidebar-button"/>
+                <Button text="Analysis" styleClass="sidebar-button"/>
+                <Button text="Reports" styleClass="sidebar-button"/>
+            </VBox>
+
+            <!-- stack our two center‐views: dashboardPane & geneInfoPane -->
+            <StackPane fx:id="centerStack" HBox.hgrow="ALWAYS">
+
+                <!-- 1) the Dashboard content -->
+                <ScrollPane fx:id="dashboardPane"
+                            fitToWidth="true"
+                            fitToHeight="true"
+                            styleClass="content-area">
+                    <content>
+                        <VBox spacing="20" styleClass="dashboard-content" HBox.hgrow="ALWAYS">
+                            <Label text="Dashboard" styleClass="page-title"/>
+                            <GridPane hgap="20" vgap="20">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.3"/>
+                                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.3"/>
+                                    <ColumnConstraints hgrow="ALWAYS" percentWidth="33.3"/>
+                                </columnConstraints>
+                                <VBox styleClass="stat-card, blue-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                    <Label text="Total Genes" styleClass="stat-title"/>
+                                    <Label text="24,685" styleClass="stat-value"/>
+                                </VBox>
+                                <VBox styleClass="stat-card, green-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                    <Label text="Drug Candidates" styleClass="stat-title"/>
+                                    <Label text="12636" styleClass="stat-value"/>
+                                </VBox>
+                                <VBox styleClass="stat-card, orange-card" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                    <Label text="Target Pathways" styleClass="stat-title"/>
+                                    <Label text="366" styleClass="stat-value"/>
+                                </VBox>
+                            </GridPane>
+                            <VBox spacing="10">
+                                <Label text="Drug Repurposing Overview" styleClass="section-title"/>
+                                <TextFlow>
+                                    <Label text="Drug repurposing (also known as drug repositioning) is a strategy for identifying new uses for approved or investigational drugs that are outside the scope of the original medical indication. This approach offers advantages over developing entirely new drugs since existing drugs have already been tested in humans, and detailed information is available on their pharmacology, formulation, potential toxicity, and drug interactions." wrapText="true"/>
+                                </TextFlow>
+
+                                <Label text="How to use this application:" styleClass="section-title" style="-fx-padding: 10 0 0 0;"/>
+                                <VBox style="-fx-padding: 0 0 0 20;">
+                                    <Label text="1. Search for a gene of interest" wrapText="true"/>
+                                    <Label text="2. View gene information and associated diseases" wrapText="true"/>
+                                    <Label text="3. Select a disease to view drug repurposing options" wrapText="true"/>
+                                    <Label text="4. Explore drug details and repurposing potential" wrapText="true"/>
+                                </VBox>
+
+                                <Label text="Featured Genes" styleClass="section-title" style="-fx-padding: 10 0 0 0;"/>
+                                <HBox spacing="10">
+                                    <Button text="BRCA1" onAction="#handleGeneButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="TP53" onAction="#handleGeneButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="PTEN" onAction="#handleGeneButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="BRAF" onAction="#handleGeneButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="PARK9" onAction="#handleGeneButtonClick" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                </HBox>
+                            </VBox>
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <!-- 2) the Gene Info pane -->
+                <ScrollPane fx:id="geneInfoPane"
+                            visible="false"
+                            managed="false"
+                            fitToWidth="true"
+                            styleClass="content-area">
+                    <content>
+                        <AnchorPane fx:id="geneDetailsPane">
+                            <VBox spacing="20" style="-fx-padding: 20;">
+                                <!-- Gene Info Section -->
+                                <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 5;">
+                                    <Label fx:id="geneNameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Gene Name (Symbol)"/>
+                                    <Label fx:id="geneDescriptionLabel" style="-fx-font-size: 14px;" wrapText="true"
+                                           text="Gene description will appear here..."/>
+                                </VBox>
+
+                                <!-- Disease Section -->
+                                <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 5;">
+                                    <Label fx:id="diseaseHeaderLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Associated Diseases"/>
+                                    <VBox fx:id="diseaseListContainer" spacing="10">
+                                        <!-- Disease cards will be added here programmatically -->
+                                        <Label text="Disease information will appear here..." style="-fx-font-style: italic;"/>
+                                    </VBox>
+                                </VBox>
+
+                                <!-- Drug Repurposing Section -->
+                                <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 5;">
+                                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Drug Repurposing Options"/>
+                                    <VBox fx:id="drugRepurposingContainer" spacing="10">
+                                        <!-- Drug cards will be added here programmatically -->
+                                        <Label text="Select a disease above to view drug repurposing options." style="-fx-font-style: italic;"/>
+                                    </VBox>
+                                </VBox>
+
+                                <!-- Return to Dashboard Button -->
+                                <HBox alignment="CENTER_LEFT">
+                                    <Button text="Return to Dashboard" onAction="#showDashboard"
+                                            style="-fx-background-color: #5a67d8; -fx-text-fill: white;"/>
+                                </HBox>
+                            </VBox>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+
+            </StackPane>
+        </HBox>
+    </center>
+
+    <!-- User Menu Popup -->
+    <AnchorPane fx:id="userMenuPopup"
+                visible="false"
+                managed="false"
+                styleClass="user-menu-popup"
+                BorderPane.alignment="TOP_RIGHT">
+        <VBox fx:id="userMenuContent" spacing="0" styleClass="user-menu-content">
+            <Button fx:id="myAccountButton" text="My Account"
+                    styleClass="user-menu-button" maxWidth="Infinity"
+                    onAction="#handleMyAccount"/>
+            <Button fx:id="geneSearchesButton" text="Gene Searches"
+                    styleClass="user-menu-button" maxWidth="Infinity"
+                    onAction="#handleGeneSearches"/>
+            <Button fx:id="settingsButton" text="Settings"
+                    styleClass="user-menu-button" maxWidth="Infinity"
+                    onAction="#handleSettings"/>
+            <Button fx:id="loginButton" text="Log In"
+                    styleClass="user-menu-button" maxWidth="Infinity"
+                    onAction="#handleLogin"/>
+            <Button fx:id="signUpButton" text="Sign Up"
+                    styleClass="user-menu-button" maxWidth="Infinity"
+                    onAction="#handleSignUp"/>
+            <Button fx:id="logOutButton" text="Log Out"
+                    styleClass="user-menu-button, log-out" maxWidth="Infinity"
+                    onAction="#handleLogout"/>
+        </VBox>
+    </AnchorPane>
+
+</BorderPane>
